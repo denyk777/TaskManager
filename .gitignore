@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 task_manager/node_modules
+task_manager/build
 /.pnp
 .pnp.js
 
