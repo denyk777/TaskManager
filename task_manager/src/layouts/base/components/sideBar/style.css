@@ -2,10 +2,54 @@
     width: 100%;
 }
 
-.side-bar__title {
+.nav-menu {
     margin: 0;
     font-family: Helvetica, sans-serif;
     color: #244f92;
     font-size: 20px;
     font-weight: 700;
+}
+
+.nav-menu__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-menu__link {
+    display: block;
+    padding: 8px 10px;
+    font-family: Helvetica, sans-serif;
+    color: #244f92;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.unactive_todo {
+    padding-left: 50px;
+    background: url("./images/unselect_todo.png")  no-repeat;
+    background-position: 10px;
+}
+
+
+.unactive_done {
+    padding-left: 50px;
+    background: url("./images/unselect_done.png")  no-repeat;
+    background-position: 10px;
+}
+
+.active_todo {
+    padding-left: 50px;
+    background: url("./images/select_todo.png") no-repeat 0 20px;
+    background-position: 10px;
+}
+
+.active_done {
+    padding-left: 50px;
+    background: url("./images/select_done.png")  no-repeat 0 20px;
+    background-position: 10px;
+}
+
+.nav-menu__link:hover {
+    background-color: #d2d2d2;
 }

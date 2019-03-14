@@ -6,9 +6,9 @@ import './style.css';
 export default class Article extends React.Component {
   render() {
     return (
-      <article className="article">
-        <h3 className="article__title">{this.props.title}</h3>
-        <p className="article__description">{this.props.description}</p>
+      <article className="article article__border_style">
+        <h3 className="article__title article__font_style">{this.props.title}</h3>
+        <p className="article__description article__font_style">{this.props.description}</p>
       </article>
     );
   };

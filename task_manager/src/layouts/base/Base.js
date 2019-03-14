@@ -14,7 +14,7 @@ export default class Base extends React.Component {
         <main className='main'>
           <SideBar className='main__side-bar'/>
           <section className='main__content'>
-            {this.props.children}
+            {this.props.children }
           </section>
         </main>
       </React.Fragment>

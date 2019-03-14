@@ -31,3 +31,8 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: 'Roboto font';
+  src: url("https://fonts.googleapis.com/css?family=Roboto");
+}
