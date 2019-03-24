@@ -1,12 +1,10 @@
 {
   "data": [
     {
-      "title": "Вчера",
-      "description": "Поел"
+      "description": "Съесть булок."
     },
     {
-      "title": "Позавчера",
-      "description": "Фотографировал"
+      "description": "Аэрофотосъёмка ландшафта."
     }
   ]
 }
