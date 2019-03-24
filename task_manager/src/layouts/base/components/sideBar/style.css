@@ -27,27 +27,27 @@
 
 .unactive_todo {
     padding-left: 50px;
-    background: url("./images/unselect_todo.png")  no-repeat;
-    background-position: 10px;
+    background: url("./images/todo_gray.svg") no-repeat 10px;
+    background-size: 25px, cover;
 }
 
 
 .unactive_done {
     padding-left: 50px;
-    background: url("./images/unselect_done.png")  no-repeat;
-    background-position: 10px;
+    background: url("./images/done_gray.svg") no-repeat 10px;
+    background-size: 25px, cover;
 }
 
 .active_todo {
     padding-left: 50px;
-    background: url("./images/select_todo.png") no-repeat 0 20px;
-    background-position: 10px;
+    background: url("./images/select_todo.png") no-repeat 10px;
+    background-size: 25px, cover;
 }
 
 .active_done {
     padding-left: 50px;
-    background: url("./images/select_done.png")  no-repeat 0 20px;
-    background-position: 10px;
+    background: url("./images/select_done.png") no-repeat 10px;
+    background-size: 25px, cover;
 }
 
 .nav-menu__link:hover {

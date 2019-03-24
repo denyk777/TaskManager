@@ -10,6 +10,9 @@ export default class Header extends React.Component {
         <div className='header__content'>
           <img src={logoImage} alt={"Else Tasks"} className='header__logo' />
         </div>
+        <h1 className='header__user_name'>
+          Denis
+        </h1>
       </header>
     );
   };

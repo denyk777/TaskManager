@@ -1,0 +1,17 @@
+<svg id="Группа_1" data-name="Группа 1" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #979797;
+        stroke-width: 1px;
+      }
+
+      .cls-2 {
+        fill: #43cda3;
+      }
+    </style>
+  </defs>
+  <circle id="Oval" class="cls-1" cx="6.5" cy="6.5" r="6"/>
+  <circle id="Oval_Copy_8" data-name="Oval Copy 8" class="cls-2" cx="6.5" cy="6.5" r="4"/>
+</svg>

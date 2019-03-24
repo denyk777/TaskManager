@@ -1,16 +1,20 @@
 import React from 'react';
 
-import Article from '../../components/article/Article';
-
+import FormTask from '../../components/article/FormTask';
+import Button from '../../components/button/Button';
 import list from './list';
 
 import './style.css';
 
 export default class Home extends React.Component {
+  done = <Button className={"article__button article__finished_task_button"}/>;
+  delete = <Button className={"article__button article__delete_button"}/>;
   renderList = () => {
     return list.data.map((item, index) => {
       return (
-        <Article key={index} title={item.title} description={item.description}/>
+        <FormTask key={index} description={item.description}
+          doneButton={this.done}
+          deleteButton={this.delete}/>
       );
     });
   };
