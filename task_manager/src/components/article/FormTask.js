@@ -6,12 +6,12 @@ import './style.css';
 export default class FormTask extends React.Component {
   render() {
     return (
-      <article className="article article__border_style">
+      <form className="article article__border_style">
         {this.props.doneButton}
         <p className="article__text ">{this.props.description}</p>
         {this.props.editButton}
         {this.props.deleteButton}
-      </article>
+      </form>
     );
   };
 };
