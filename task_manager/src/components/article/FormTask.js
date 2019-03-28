@@ -17,9 +17,13 @@ export default class FormTask extends React.Component {
 };
 
 FormTask.propTypes = {
-  description: PropTypes.string
+  description: PropTypes.string,
+  doneButton: PropTypes.object,
+  editButton: PropTypes.object,
+  deleteButton:PropTypes.object,
 };
 
 FormTask.defaultProps = {
-  description: ''
+  description: '',
+
 };
