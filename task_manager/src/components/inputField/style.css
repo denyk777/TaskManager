@@ -1,0 +1,35 @@
+.input_field__edit_field {
+    border: none;
+    border-bottom: 1.3px solid #45d3a8;
+    width: 500px;
+    height: 40px;
+    margin-bottom: 20px;
+    padding-left: 1%;
+    font-size: 20px;
+    font-family: "Roboto font", sans-serif;
+    font-weight: 300;
+}
+
+.input_field__submit_button {
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(80,213,173,0.25);
+    font-size: 20px;
+    color: #ffffff;
+    font-family: "Roboto font", sans-serif;
+    font-weight: 500;
+    margin-left: 20px;
+    width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: 20% 48%;
+    background-color: #50d5ad;
+    background-image: url("./images/plus_create button.svg");
+}
+
+.input_field__submit_button:disabled {
+    box-shadow: 0 2px 4px rgba(193, 193, 193, 0.19);
+    background-color: #bdbdbd;
+}

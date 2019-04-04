@@ -6,44 +6,74 @@ import list from './list';
 import Button from '../../components/button/Button'
 
 import './style.css';
+import InputField from "../../components/inputField/InputField";
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      id: '',
+      value: '',
+      itemList: [...list.data],
     };
   }
 
   deleteTask = (id) => {
-    alert(list.data[id].description);
-    delete list.data[id];
-    this.setState({id: id});
+    alert(this.state.itemList[id].description);
   };
 
   editTask = (id) => {
-    alert(list.data[id].description);
+    alert(this.state.itemList[id].description);
   };
 
   finishTask = (id) => {
-    alert(list.data[id].description);
+    alert(this.state.itemList[id].description);
   };
 
-  renderList = () => {
-    return list.data.map((item, index) => {
+  renderList = (itemList) => {
+    return itemList.map((item, index) => {
       return (
-          <FormTask key={index} title={item.title} description={item.description}
-            doneButton = {<Button className={"article__button article__done_button"} eventTask={this.finishTask.bind(this, item.id)}/>}
-            editButton = {<Button className={"article__button article__edit_button"} eventTask={this.editTask.bind(this, item.id)}/>}
-            deleteButton = {<Button className={"article__button article__delete_button"} eventTask={this.deleteTask.bind(this, item.id)}/>}
+          <FormTask key={index} description={item.description}
+            doneButton = {<Button className={"article__button article__done_button"} eventTask={this.finishTask.bind(this, index)}/>}
+            editButton = {<Button className={"article__button article__edit_button"} eventTask={this.editTask.bind(this, index)}/>}
+            deleteButton = {<Button className={"article__button article__delete_button"} eventTask={this.deleteTask.bind(this, index)}/>}
           />
       );
     });
   };
+
+  onChange = (event) => {
+      this.setState({
+        value: event.target.value,
+      }
+
+      ) ;
+  };
+
+//
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    this.setState({
+      value: '',
+      itemList: [
+        {
+          "description":this.state.value
+        },
+        ...this.state.itemList,
+        ]
+      }
+    );
+  };
+
   render() {
     return (
       <React.Fragment>
-        {this.renderList()}
+        <form>
+          <InputField className="input_field__edit_field" placeholder="Type your new task" value={this.state.value} onChange={this.onChange}/>
+          <Button className="input_field__submit_button" type="button" value="Create" disabled={this.state.value===''} eventTask={this.onSubmit}/>
+        </form>
+        {this.renderList(this.state.itemList)}
       </React.Fragment>
     );
   };

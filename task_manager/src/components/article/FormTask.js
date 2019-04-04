@@ -25,5 +25,4 @@ FormTask.propTypes = {
 
 FormTask.defaultProps = {
   description: '',
-
 };
