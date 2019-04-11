@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from "react-redux";
 
 import FormTask from '../../components/article/FormTask';
 import Button from '../../components/button/Button';
@@ -6,7 +7,7 @@ import list from './list';
 
 import './style.css';
 
-export default class Home extends React.Component {
+class Done extends React.Component {
   done = <Button className={"article__button article__finished_task_button"}/>;
 
   deleteTask = (event) => {
@@ -33,3 +34,10 @@ export default class Home extends React.Component {
     );
   };
 };
+
+
+const mapDispatchProps = () => ({});
+
+const mapStateToProps = () => ({});
+
+export default connect (mapStateToProps, mapDispatchProps) (Done);

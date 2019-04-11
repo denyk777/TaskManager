@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from "react-redux";
 
 import FormTask from '../../components/article/FormTask';
 
@@ -8,7 +9,7 @@ import Button from '../../components/button/Button'
 import './style.css';
 import InputField from "../../components/inputField/InputField";
 
-export default class Home extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
 
@@ -77,4 +78,10 @@ export default class Home extends React.Component {
       </React.Fragment>
     );
   };
-};
+}
+
+const mapDispatchProps = () => ({});
+
+const mapStateToProps = () => ({});
+
+export default connect(mapStateToProps, mapDispatchProps)(Home);
