@@ -1,70 +1,67 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 import FormTask from '../../components/article/FormTask';
 
-import list from './list';
+import getTodoList from '../../actions/itemList/getTodoList'
+import addTask from '../../actions/itemList/addItemToList'
 import Button from '../../components/button/Button'
 
 import './style.css';
 import InputField from "../../components/inputField/InputField";
 
 class Home extends React.Component {
+  componentDidMount(){
+    this.props.getItemList();
+    this.getLastId();
+  }
+
   constructor(props) {
     super(props);
 
     this.state = {
       value: '',
-      itemList: [...list.data],
+      task_id: 0,
     };
   }
 
-  deleteTask = (id) => {
-    alert(this.state.itemList[id].description);
+
+
+  getLastId = () => {
+    this.props.itemList.forEach((item) => {
+      if (item.id > this.task_id) {
+        this.task_id = item.id;
+      }
+    })
   };
 
-  editTask = (id) => {
-    alert(this.state.itemList[id].description);
-  };
-
-  finishTask = (id) => {
-    alert(this.state.itemList[id].description);
-  };
-
-  renderList = (itemList) => {
-    return itemList.map((item, index) => {
+  renderList = () => {
+    return this.props.itemList.map((item) => {
       return (
-          <FormTask key={index} description={item.description}
-            doneButton = {<Button className={"article__button article__done_button"} eventTask={this.finishTask.bind(this, index)}/>}
-            editButton = {<Button className={"article__button article__edit_button"} eventTask={this.editTask.bind(this, index)}/>}
-            deleteButton = {<Button className={"article__button article__delete_button"} eventTask={this.deleteTask.bind(this, index)}/>}
-          />
+        <FormTask key={item.id} description={item.description}
+                  doneButton = {<Button className={"article__button article__done_button"} />}
+                  editButton = {<Button className={"article__button article__edit_button"} />}
+                  deleteButton = {<Button className={"article__button article__delete_button"} />}
+        />
       );
     });
   };
 
   onChange = (event) => {
-      this.setState({
+    this.setState({
         value: event.target.value,
       }
-
-      ) ;
+    ) ;
   };
 
-//
+
 
   onSubmit = (event) => {
-    event.preventDefault();
+    this.props.addTodo(this.task_id++, this.state.value);
     this.setState({
       value: '',
-      itemList: [
-        {
-          "description":this.state.value
-        },
-        ...this.state.itemList,
-        ]
-      }
-    );
+    })
   };
 
   render() {
@@ -72,16 +69,22 @@ class Home extends React.Component {
       <React.Fragment>
         <form>
           <InputField className="input_field__edit_field" placeholder="Type your new task" value={this.state.value} onChange={this.onChange}/>
-          <Button className="input_field__submit_button" type="button" value="Create" disabled={this.state.value===''} eventTask={this.onSubmit}/>
+          <Button className="input_field__submit_button" type="button" value="Create" disabled={this.state.value===''} eventTask={this.onSubmit} />
         </form>
-        {this.renderList(this.state.itemList)}
+        {this.renderList()}
       </React.Fragment>
     );
   };
 }
 
-const mapDispatchProps = () => ({});
+const mapDispatchProps = (dispatch) => ({
+  getItemList: bindActionCreators(getTodoList, dispatch),
+  addTodo: bindActionCreators(addTask, dispatch),
+});
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({
+  itemList: state.itemListReducer.itemList,
+  addTodo: state.itemListReducer.addTodo,
+});
 
 export default connect(mapStateToProps, mapDispatchProps)(Home);

@@ -1,27 +1,43 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
+import getDoneList from '../../actions/itemList/getDoneList'
 import FormTask from '../../components/article/FormTask';
 import Button from '../../components/button/Button';
-import list from './list';
 
 import './style.css';
 
 class Done extends React.Component {
-  done = <Button className={"article__button article__finished_task_button"}/>;
+  componentDidMount(){
+    this.props.getItemList();
+    this.getLastId();
+  }
 
-  deleteTask = (event) => {
-    event.preventDefault();
-    delete list.data[event.target.id];
-    this.setState({id: event.target.id})
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      task_id: 0,
+    };
+  }
+
+  getLastId = () => {
+    this.props.itemList.forEach((item) => {
+      if (item.id > this.task_id) {
+        this.task_id = item.id;
+      }
+    })
   };
 
+  done = <Button className={"article__button article__finished_task_button"}/>;
+
   renderList = () => {
-    return list.data.map((item, index) => {
+    return this.props.itemList.map((item) => {
       return (
-        <FormTask key={index} description={item.description}
+        <FormTask key={item.id} description={item.description}
           doneButton={this.done}
-          deleteButton={<Button className={"article__button article__delete_button"} id={item.id} eventTask={this.deleteTask}/>}/>
+          deleteButton={<Button className={"article__button article__delete_button"} id={item.id}/>}/>
       );
     });
   };
@@ -36,8 +52,12 @@ class Done extends React.Component {
 };
 
 
-const mapDispatchProps = () => ({});
+const mapDispatchProps = (dispatch) => ({
+  getItemList: bindActionCreators(getDoneList, dispatch),
+});
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({
+  itemList: state.itemListReducer.itemList,
+});
 
 export default connect (mapStateToProps, mapDispatchProps) (Done);
